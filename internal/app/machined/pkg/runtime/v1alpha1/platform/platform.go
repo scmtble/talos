@@ -13,9 +13,9 @@ import (
 	"os"
 
 	"github.com/siderolabs/go-procfs/procfs"
-
 	"github.com/siderolabs/talos/internal/app/machined/pkg/runtime"
 	"github.com/siderolabs/talos/internal/app/machined/pkg/runtime/v1alpha1/platform/akamai"
+	"github.com/siderolabs/talos/internal/app/machined/pkg/runtime/v1alpha1/platform/alibabacloud"
 	"github.com/siderolabs/talos/internal/app/machined/pkg/runtime/v1alpha1/platform/aws"
 	"github.com/siderolabs/talos/internal/app/machined/pkg/runtime/v1alpha1/platform/azure"
 	"github.com/siderolabs/talos/internal/app/machined/pkg/runtime/v1alpha1/platform/cloudstack"
@@ -139,6 +139,8 @@ func newPlatform(platform string) (p runtime.Platform, err error) {
 		p = &vmware.VMware{}
 	case "vultr":
 		p = &vultr.Vultr{}
+	case "alibabacloud":
+		p = &alibabacloud.AlibabaCloud{}
 	default:
 		return nil, fmt.Errorf("unknown platform: %q", platform)
 	}

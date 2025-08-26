@@ -100,6 +100,18 @@ var Default = map[string]Profile{
 		},
 	},
 	// Clouds
+	"alibabacloud": {
+		Platform:   "alibabacloud",
+		SecureBoot: pointer.To(false),
+		Output: Output{
+			Kind:      OutKindImage,
+			OutFormat: OutFormatZSTD,
+			ImageOptions: &ImageOptions{
+				DiskSize:   DefaultRAWDiskSize,
+				DiskFormat: DiskFormatRaw,
+			},
+		},
+	},
 	"akamai": {
 		Platform:   "akamai",
 		SecureBoot: pointer.To(false),
